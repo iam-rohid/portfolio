@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useColorScheme } from "../../src/contexts/color-scheme";
+import { useColorScheme } from "../../contexts/color-scheme";
 import { MdLightMode, MdDarkMode, MdMenu } from "react-icons/md";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
