@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../components/Container";
-import Header from "../components/header/header";
+import Container from "src/components/Container";
+import Header from "src/components/header/header";
 
 const HomePage = () => {
   return (
