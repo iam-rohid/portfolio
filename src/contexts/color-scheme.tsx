@@ -24,7 +24,6 @@ export const ColorSchemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    console.log(colorScheme);
     if (colorScheme !== null) {
       document.documentElement.classList.toggle("dark", colorScheme === "dark");
       localStorage.setItem("theme", colorScheme);
@@ -36,7 +35,6 @@ export const ColorSchemeProvider = ({ children }: { children: ReactNode }) => {
       "(prefers-color-scheme: dark)"
     ).matches;
     const lsTheme = localStorage.getItem("theme") as ColorScheme;
-    console.log({ lsTheme });
     setColorScheme(lsTheme || (isSystemDark ? "dark" : "light"));
   }, []);
 

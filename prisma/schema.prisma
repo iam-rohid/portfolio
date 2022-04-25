@@ -42,7 +42,7 @@ model Blog {
   updatedAt  DateTime  @updatedAt
   // Main Fields
   title      String
-  slug       String
+  slug       String    @unique
   excerpt    String
   content    String
   coverImage String?
@@ -79,7 +79,7 @@ model Category {
   updatedAt DateTime  @updatedAt
   // Main Fields
   name      String
-  slug      String
+  slug      String    @unique
   status    Status    @default(DRAFT)
   // Relations
   blogs     Blog[]
@@ -92,7 +92,7 @@ model Tag {
   updatedAt DateTime  @updatedAt
   // Main Fields
   name      String
-  slug      String
+  slug      String    @unique
   status    Status    @default(DRAFT)
   // Relations
   blogs     Blog[]
