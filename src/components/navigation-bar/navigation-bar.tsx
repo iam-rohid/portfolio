@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useColorScheme } from "src/contexts/color-scheme";
 import { MdLightMode, MdDarkMode, MdMenu, MdClose } from "react-icons/md";
-import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import Container from "src/components/Container";
 import SocialLinks from "../social-links";
@@ -12,8 +11,8 @@ export const menu = [
     href: "/",
   },
   {
-    label: "Blog",
-    href: "/blog",
+    label: "Blogs",
+    href: "/blogs",
   },
   {
     label: "Projects",
