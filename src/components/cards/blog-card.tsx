@@ -5,7 +5,7 @@ export type BlogCardProps = {
   title: string;
   excerpt: string;
   slug: string;
-  publishedAt: string;
+  publishedAt: any;
   tags: {
     name: string;
     slug: string;
@@ -29,7 +29,7 @@ export const BlogCard = ({
         Published At {moment(publishedAt).format("DD MMM, YYYY")}
       </p>
       <p className="text-gray-700 dark:text-gray-300">{excerpt}</p>
-      {tags && (
+      {tags && tags.length > 0 && (
         <ul className="flex flex-row flex-wrap gap-2 mt-4">
           {tags?.map((tag, index) => (
             <li key={index}>
