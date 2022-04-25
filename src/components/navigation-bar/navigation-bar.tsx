@@ -4,6 +4,7 @@ import { MdLightMode, MdDarkMode, MdMenu, MdClose } from "react-icons/md";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import Container from "src/components/Container";
+import SocialLinks from "../social-links";
 
 export const menu = [
   {
@@ -51,7 +52,7 @@ export const NavigationBar = () => {
 
   return (
     <>
-      <header className="w-full bg-white dark:bg-gray-900 sticky top-0">
+      <header className="w-full bg-white dark:bg-gray-900 sticky top-0 z-30">
         <nav className="">
           <Container className="flex items-center gap-6 h-14">
             <div className="flex-1 md:hidden">
@@ -74,29 +75,7 @@ export const NavigationBar = () => {
               ))}
             </ul>
 
-            <ul className="flex gap-6">
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50 text-xl">
-                    <FaGithub />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50 text-xl">
-                    <FaInstagram />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50 text-xl">
-                    <FaTwitter />
-                  </a>
-                </Link>
-              </li>
-            </ul>
+            <SocialLinks className="text-xl" />
 
             <button
               className="w-14 h-8 rounded-full bg-gray-100 dark:bg-gray-800 relative group"

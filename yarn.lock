@@ -2209,6 +2209,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.29.3":
+  version: 2.29.3
+  resolution: "moment@npm:2.29.3"
+  checksum: 2e780e36d9a1823c08a1b6313cbb08bd01ecbb2a9062095820a34f42c878991ccba53abaa6abb103fd5c01e763724f295162a8c50b7e95b4f1c992ef0772d3f0
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -2590,6 +2597,7 @@ __metadata:
     classnames: ^2.3.1
     eslint: 8.14.0
     eslint-config-next: 12.1.5
+    moment: ^2.29.3
     next: 12.1.5
     postcss: ^8.4.12
     react: 18.0.0
