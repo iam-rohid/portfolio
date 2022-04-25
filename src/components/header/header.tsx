@@ -1,16 +1,39 @@
 import { useEffect, useState } from "react";
 import { useColorScheme } from "src/contexts/color-scheme";
-import { MdLightMode, MdDarkMode, MdMenu } from "react-icons/md";
+import { MdLightMode, MdDarkMode, MdMenu, MdClose } from "react-icons/md";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import Container from "src/components/Container";
+
+export const menu = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Blogs",
+    href: "/blogs",
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+  },
+  {
+    label: "Snippets",
+    href: "/snippets",
+  },
+  {
+    label: "Tags",
+    href: "/tags",
+  },
+];
 
 const Header = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleWindowResize = () => {
-    if (window.innerWidth > 640) {
+    if (window.innerWidth > 768) {
       setShowSidebar(false);
     }
   };
@@ -29,45 +52,26 @@ const Header = () => {
   return (
     <>
       <header className="w-full bg-white dark:bg-gray-900 sticky top-0">
-        <Container>
-          <nav className="flex items-center gap-6 h-14">
-            <div className="flex-1 sm:hidden">
+        <nav className="">
+          <Container className="flex items-center gap-6 h-14">
+            <div className="flex-1 md:hidden">
               <button
-                className="flex items-center justify-center text-2xl"
-                onClick={() => setShowSidebar(true)}
+                className={`flex items-center justify-center text-2xl`}
+                onClick={() => setShowSidebar(!showSidebar)}
               >
-                <MdMenu />
+                {showSidebar ? <MdClose /> : <MdMenu />}
               </button>
             </div>
-            <ul className="flex-1 gap-6 hidden sm:flex">
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
-                    Home
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
-                    Blog
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
-                    Projects
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
-                    Snippets
-                  </a>
-                </Link>
-              </li>
+            <ul className="flex-1 gap-6 hidden md:flex">
+              {menu.map((item, index) => (
+                <li key={index}>
+                  <Link href={item.href}>
+                    <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
+                      {item.label}
+                    </a>
+                  </Link>
+                </li>
+              ))}
             </ul>
 
             <ul className="flex gap-6">
@@ -117,67 +121,41 @@ const Header = () => {
                 </div>
               </div>
             </button>
-          </nav>
-        </Container>
+          </Container>
+        </nav>
       </header>
       <div
-        className={`fixed inset-0 z-40 ${
+        className={`fixed left-0 right-0 bottom-0 top-14 z-40 md:hidden ${
           showSidebar ? "" : "pointer-events-none"
         }`}
       >
         <div
-          className={`absolute inset-0 w-full h-full bg-black z-40 transition-all duration-300 ${
-            showSidebar ? "bg-opacity-50 " : "bg-opacity-0"
+          className={`absolute inset-0 w-full h-full bg-black z-40 transition-[background-color] duration-300  ${
+            showSidebar ? "bg-opacity-50" : "bg-opacity-0"
           }`}
           onClick={() => setShowSidebar(false)}
         />
         <aside
-          className={`max-w-[80%] w-80 bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out absolute top-0 bottom-0 z-50 ${
+          className={`max-w-[80%] w-80 bg-white dark:bg-gray-900 transition-[left] duration-300 ease-in-out absolute top-0 bottom-0 z-50 overflow-y-auto ${
             showSidebar ? "left-0" : "-left-80"
           }`}
         >
-          <ul className="py-4">
-            <li>
-              <Link href="/">
-                <a
-                  onClick={() => setShowSidebar(false)}
-                  className="p-4 w-full block hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  Home
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog">
-                <a
-                  onClick={() => setShowSidebar(false)}
-                  className="p-4 w-full block hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  Blog
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/projects">
-                <a
-                  onClick={() => setShowSidebar(false)}
-                  className="p-4 w-full block hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  Projects
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/snippets">
-                <a
-                  onClick={() => setShowSidebar(false)}
-                  className="p-4 w-full block hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  Snippets
-                </a>
-              </Link>
-            </li>
-          </ul>
+          <nav>
+            <ul className="py-4">
+              {menu.map((item, index) => (
+                <li key={index}>
+                  <Link href={item.href}>
+                    <a
+                      onClick={() => setShowSidebar(false)}
+                      className="py-4 px-6 w-full block hover:bg-gray-100 dark:hover:bg-gray-800"
+                    >
+                      {item.label}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </aside>
       </div>
     </>
