@@ -1,11 +1,13 @@
 import "src/styles/globals.css";
-import type { AppProps } from "next/app";
 import ColorSchemeProvider from "src/contexts/color-scheme";
+import { CustomAppProps } from "src/types";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: CustomAppProps) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <ColorSchemeProvider>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </ColorSchemeProvider>
   );
 }

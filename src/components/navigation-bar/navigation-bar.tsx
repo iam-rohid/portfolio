@@ -11,8 +11,8 @@ export const menu = [
     href: "/",
   },
   {
-    label: "Blogs",
-    href: "/blogs",
+    label: "Blog",
+    href: "/blog",
   },
   {
     label: "Projects",
@@ -28,7 +28,7 @@ export const menu = [
   },
 ];
 
-const Header = () => {
+export const NavigationBar = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -162,4 +162,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NavigationBar;
