@@ -4,29 +4,7 @@ import { MdLightMode, MdDarkMode, MdMenu, MdClose } from "react-icons/md";
 import Link from "next/link";
 import Container from "src/components/Container";
 import SocialLinks from "../social-links";
-
-export const menu = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Blogs",
-    href: "/blogs",
-  },
-  {
-    label: "Projects",
-    href: "/projects",
-  },
-  {
-    label: "Snippets",
-    href: "/snippets",
-  },
-  {
-    label: "Tags",
-    href: "/tags",
-  },
-];
+import { navMenu } from "src/data/nav-menu";
 
 export const NavigationBar = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -63,7 +41,7 @@ export const NavigationBar = () => {
               </button>
             </div>
             <ul className="flex-1 gap-6 hidden md:flex">
-              {menu.map((item, index) => (
+              {navMenu.map((item, index) => (
                 <li key={index}>
                   <Link href={item.href}>
                     <a className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50">
@@ -120,7 +98,7 @@ export const NavigationBar = () => {
         >
           <nav>
             <ul className="py-4">
-              {menu.map((item, index) => (
+              {navMenu.map((item, index) => (
                 <li key={index}>
                   <Link href={item.href}>
                     <a
